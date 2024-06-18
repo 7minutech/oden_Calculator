@@ -1,0 +1,33 @@
+body{
+    font-family: Tahoma, Verdana, sans-serif;
+    background-color: #241e1ee3;
+
+}
+.calculator{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 8px;
+    width: 240px;
+    border: 2px solid gray;
+    padding: 8px;
+    background-color: #0000008c;
+}
+
+.row{
+    height: 48px;
+    display: flex;
+    gap: 8px;
+}
+button,#screen{
+    flex: 1;
+    background-color: #7499998c;
+    border: 1px solid #ffffff73;
+    color: white;
+}
+#screen{
+    padding-left: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    letter-spacing: 1px;
+}
