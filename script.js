@@ -65,14 +65,15 @@ function operate(a,operator,b){
 }
 
 function populate(){
+    //inputs numbers 
     numberButtons.forEach(number => {
         number.addEventListener("click",function(){
             input+=number.textContent;
             screenInput.textContent = input;
         })
     });
+    //gets operator
     operatorButtons.forEach(operatorSign => {
-        
         operatorSign.addEventListener("click",function(){
             if(checkDivisionByZero((screenInput.textContent))){
                 input = ""
@@ -80,14 +81,18 @@ function populate(){
                 lastInput = ""
                 screenInput.textContent = ""
             }
+            //was equal button clicked
+            //assign operator first
             if(hasEqualed){
                 operator = operatorSign.textContent;
                 hasEqualed = false;
             }
+            //if no firstINput
             if(firstInput == ""){
                 firstInput = screenInput.textContent;
                 input = ""
             }
+            //if first input get lastInput
             else{
                 input = ""
                 lastInput = screenInput.textContent;
@@ -95,6 +100,8 @@ function populate(){
                 screenInput.textContent = operate(firstInput,operator,lastInput)
                 firstInput = operate(firstInput,operator,lastInput)
             }
+        //if equal button wasn't clicked
+        // assign operator last
         if(!(hasEqualed)){
             operator = operatorSign.textContent;
         }
