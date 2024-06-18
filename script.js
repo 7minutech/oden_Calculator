@@ -1,7 +1,14 @@
-let a;
-let b;
+
 let operator;
 let input = "";
+let firstInput;
+let lastInput;
+const screenInput = document.querySelector("#input")
+const numberButtons = document.querySelectorAll(".number")
+const operatorButtons = document.querySelectorAll(".operator")
+const equalButton = document.querySelector("#equalButton")
+
+
 function add(a,b){
     return a+b;
 }
@@ -20,7 +27,7 @@ function operate(a,operator,b){
             return add(a,b)
         case "-":
             return subtract(a,b)
-        case "*":
+        case "x":
             return multiply(a,b)
         case "/":
             return divide(a,b)
@@ -28,14 +35,28 @@ function operate(a,operator,b){
 }
 
 function populate(){
-    screenInput = document.querySelector("#input")
-    numbers = document.querySelectorAll(".number")
-    numbers.forEach(number => {
+    numberButtons.forEach(number => {
         number.addEventListener("click",function(){
             input+=number.textContent;
             screenInput.textContent = input;
         })
     });
+    operatorButtons.forEach(operatorSign => {
+        operatorSign.addEventListener("click",function(){
+            operator = operatorSign.textContent;
+            firstInput = screenInput.textContent;
+            input = ""
+            screenInput.textContent = input;
+        })
+    });
+    equalButton.addEventListener("click",function(){
+        lastInput = screenInput.textContent;
+        console.log(`${firstInput} ${operator} ${lastInput}`)
+        console.log(operate(firstInput,operator,lastInput))
+        screenInput.textContent = operate(firstInput,operator,lastInput)
+
+    })
+    
 }
 populate()
 
