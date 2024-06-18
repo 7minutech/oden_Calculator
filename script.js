@@ -81,7 +81,8 @@ function populate(){
                 screenInput.textContent = ""
             }
             if(hasEqualed){
-            operator = operatorSign.textContent;
+                operator = operatorSign.textContent;
+                hasEqualed = false;
             }
             if(firstInput == ""){
                 firstInput = screenInput.textContent;
@@ -108,12 +109,12 @@ function populate(){
             screenInput.textContent = ""
         }
         else{
-        lastInput = screenInput.textContent;
-        console.log(`${firstInput} ${operator} ${lastInput}`)
-        console.log(operate(firstInput,operator,lastInput))
-        screenInput.textContent = operate(firstInput,operator,lastInput)
-        firstInput = ""
-        hasEqualed = true
+            lastInput = screenInput.textContent;
+            console.log(`${firstInput} ${operator} ${lastInput}`)
+            console.log(operate(firstInput,operator,lastInput))
+            screenInput.textContent = operate(firstInput,operator,lastInput)
+            firstInput = ""
+            hasEqualed = true
         }
     })
     clearButton.addEventListener("click",function(){
