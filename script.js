@@ -20,16 +20,31 @@ function checkDivisionByZero(result){
 }
 
 function add(a,b){
-    return Number(a)+Number(b);
+    if(b == "." || a == "."){
+        return "Nice try"
+    }
+    else{
+        return Number(a) + Number(b);
+    };
 }
 function subtract(a,b){
-    return a-b;
+    if(b == "." || a == "."){
+        return "Nice try"
+    }
+    else{
+        return a-b
+    }
 }
 function multiply(a,b){
-    return a*b;
+    if(b == "." || a=="."){
+        return "Nice try"
+    }
+    else{
+        return a*b
+    }
 }
 function divide(a,b){
-    if(b == 0){
+    if(b == 0 || b == "." || a == "."){
         return "Nice try"
     }
     else{
