@@ -22,7 +22,12 @@ function multiply(a,b){
     return a*b;
 }
 function divide(a,b){
-    return a/b;
+    if(b == 0){
+        return "Error, Division by zero, Nice try"
+    }
+    else{
+        return a/b
+    }
 }
 function operate(a,operator,b){
     switch (operator){
