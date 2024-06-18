@@ -10,7 +10,14 @@ const equalButton = document.querySelector("#equalButton")
 const clearButton = document.querySelector("#clearButton")
 let hasEqualed = false;
 
-
+function checkDivisionByZero(result){
+    if(result == "Nice try"){
+        return true
+    }
+    else{
+        return false
+    }
+}
 
 function add(a,b){
     return Number(a)+Number(b);
@@ -23,7 +30,7 @@ function multiply(a,b){
 }
 function divide(a,b){
     if(b == 0){
-        return "Error, Division by zero, Nice try"
+        return "Nice try"
     }
     else{
         return a/b
@@ -52,6 +59,12 @@ function populate(){
     operatorButtons.forEach(operatorSign => {
         
         operatorSign.addEventListener("click",function(){
+            if(checkDivisionByZero((screenInput.textContent))){
+                input = ""
+                firstInput = ""
+                lastInput = ""
+                screenInput.textContent = ""
+            }
             if(hasEqualed){
             operator = operatorSign.textContent;
             }
@@ -73,12 +86,20 @@ function populate(){
         })
     });
     equalButton.addEventListener("click",function(){
+        if(checkDivisionByZero((screenInput.textContent))){
+            input = ""
+            firstInput = ""
+            lastInput = ""
+            screenInput.textContent = ""
+        }
+        else{
         lastInput = screenInput.textContent;
         console.log(`${firstInput} ${operator} ${lastInput}`)
         console.log(operate(firstInput,operator,lastInput))
         screenInput.textContent = operate(firstInput,operator,lastInput)
         firstInput = ""
         hasEqualed = true
+        }
     })
     clearButton.addEventListener("click",function(){
         input = ""
