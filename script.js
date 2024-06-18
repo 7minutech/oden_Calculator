@@ -7,6 +7,8 @@ const screenInput = document.querySelector("#input")
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
 const equalButton = document.querySelector("#equalButton")
+const clearButton = document.querySelector("#clearButton")
+
 
 
 function add(a,b){
@@ -54,6 +56,10 @@ function populate(){
         console.log(`${firstInput} ${operator} ${lastInput}`)
         console.log(operate(firstInput,operator,lastInput))
         screenInput.textContent = operate(firstInput,operator,lastInput)
+    })
+    clearButton.addEventListener("click",function(){
+        input = ""
+        screenInput.textContent = "";   
     })
     
 }
