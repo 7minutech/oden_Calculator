@@ -10,7 +10,7 @@ const equalButton = document.querySelector("#equalButton")
 
 
 function add(a,b){
-    return a+b;
+    return Number(a)+Number(b);
 }
 function subtract(a,b){
     return a-b;
@@ -54,7 +54,6 @@ function populate(){
         console.log(`${firstInput} ${operator} ${lastInput}`)
         console.log(operate(firstInput,operator,lastInput))
         screenInput.textContent = operate(firstInput,operator,lastInput)
-
     })
     
 }
