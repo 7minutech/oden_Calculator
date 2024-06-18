@@ -1,14 +1,25 @@
 body{
     font-family: Tahoma, Verdana, sans-serif;
-    background-color: #241e1ee3;
+    background-color: #181616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 24px;
 
+}
+.container{
+    display: flex;
+    width: 360px;
 }
 .calculator{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     gap: 8px;
-    width: 240px;
+    width: 400px;
+    height: 500px;
+    flex: 1;
     border: 2px solid gray;
     padding: 8px;
     background-color: #0000008c;
@@ -18,6 +29,7 @@ body{
     height: 48px;
     display: flex;
     gap: 8px;
+    flex: 1;
 }
 button,#screen{
     flex: 1;
@@ -26,8 +38,10 @@ button,#screen{
     color: white;
 }
 #screen{
+    display: flex;
     padding-left: 8px;
+    padding-bottom: 12px;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     letter-spacing: 1px;
 }
