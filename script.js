@@ -1,8 +1,8 @@
 
 let operator;
 let input = "";
-let firstInput;
-let lastInput;
+let firstInput = "";
+let lastInput = "";
 const screenInput = document.querySelector("#input")
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
@@ -45,20 +45,31 @@ function populate(){
     });
     operatorButtons.forEach(operatorSign => {
         operatorSign.addEventListener("click",function(){
+            if(firstInput == ""){
+                firstInput = screenInput.textContent;
+                input = ""
+            }
+            else{
+                input = ""
+                lastInput = screenInput.textContent;
+                console.log(`${firstInput} ${operator} ${lastInput}`)
+                screenInput.textContent = operate(firstInput,operator,lastInput)
+                firstInput = operate(firstInput,operator,lastInput)
+            }
             operator = operatorSign.textContent;
-            firstInput = screenInput.textContent;
-            input = ""
-            screenInput.textContent = input;
+
         })
     });
     equalButton.addEventListener("click",function(){
-        lastInput = screenInput.textContent;
+        firstInput = screenInput.textContent;
         console.log(`${firstInput} ${operator} ${lastInput}`)
         console.log(operate(firstInput,operator,lastInput))
         screenInput.textContent = operate(firstInput,operator,lastInput)
     })
     clearButton.addEventListener("click",function(){
         input = ""
+        firstInput =""
+        lastInput = ""
         screenInput.textContent = "";   
     })
     
