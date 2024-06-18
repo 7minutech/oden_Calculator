@@ -8,6 +8,7 @@ const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
 const equalButton = document.querySelector("#equalButton")
 const clearButton = document.querySelector("#clearButton")
+let hasEqualed = false;
 
 
 
@@ -44,7 +45,11 @@ function populate(){
         })
     });
     operatorButtons.forEach(operatorSign => {
+        
         operatorSign.addEventListener("click",function(){
+            if(hasEqualed){
+            operator = operatorSign.textContent;
+            }
             if(firstInput == ""){
                 firstInput = screenInput.textContent;
                 input = ""
@@ -56,15 +61,19 @@ function populate(){
                 screenInput.textContent = operate(firstInput,operator,lastInput)
                 firstInput = operate(firstInput,operator,lastInput)
             }
+        if(!(hasEqualed)){
             operator = operatorSign.textContent;
-
+        }
+            
         })
     });
     equalButton.addEventListener("click",function(){
-        firstInput = screenInput.textContent;
+        lastInput = screenInput.textContent;
         console.log(`${firstInput} ${operator} ${lastInput}`)
         console.log(operate(firstInput,operator,lastInput))
         screenInput.textContent = operate(firstInput,operator,lastInput)
+        firstInput = ""
+        hasEqualed = true
     })
     clearButton.addEventListener("click",function(){
         input = ""
